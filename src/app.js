@@ -5,7 +5,7 @@ var posts = require("./mock/posts.json");
 
 var postsLists = Object.keys(posts).map(function(value) {
   return posts[value]
-})
+});
 
 var app = express();
 
@@ -30,6 +30,14 @@ if (title === undefined) {
 } else {
   var post = posts[title] || {};
   res.render("post", { post: post});
+  }
+});
+
+app.get("/posts", function(req, res) {
+if (req.query.raw) {
+    res.json(posts);
+  } else {
+  res.json(postsLists);
   }
 });
 
