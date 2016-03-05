@@ -5,8 +5,11 @@ var posts = require("./mock/posts.json");
 
 var app = express();
 
+app.set("view engine", "jade");
+app.set("views", __dirname + "/views");
+
 app.get("/", function(req, res) {
-  res.send("<h1>Response changed</h1>");
+  res.render("index");
 })
 
 //added ? to make the title parameter optional
