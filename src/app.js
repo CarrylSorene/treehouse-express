@@ -20,8 +20,8 @@ if (title === undefined) {
   res.status(503);
   res.send("This page is under construction")
 } else {
-  var post = posts[title];
-  res.send(post);
+  var post = posts[title] || {};
+  res.render("post", { post: post});
   }
 });
 
